@@ -1,0 +1,33 @@
+﻿@model Expense_Tracker_application.Models.Category;
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row">
+    <div class="col">
+        <h2>Update New Category</h2>
+        <form asp-action="Edit" asp-controller="Category" method="post" enctype="multipart/form-data">
+            <input asp-for="CategoryId" type="hidden" />
+
+            <div class="row mb-2">
+                <label class="col-form-label col-md-2">Expense Category</label>
+                <div class="col-md-4">
+                    <input class="form-control" asp-for="CategoryName" />
+                </div>
+                <div class="col-md-4">
+                    <span asp-validation-for="CategoryName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="offset-2 col-md-4">
+                    <button class="btn btn-success" type="submit">Submit</button>
+                    <a asp-action="Index">Back to the list</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

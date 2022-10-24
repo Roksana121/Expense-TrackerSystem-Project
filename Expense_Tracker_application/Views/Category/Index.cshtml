@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Expense_Tracker_application.Models.Category>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="col-md-8">
+    <h3>Category List</h3>
+    <div class="d-flex justify-content-end mb-2">
+        <a class="btn btn-primary btn-sm" asp-action="Create" asp-controller="Category">Add New Category</a>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Expense Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in Model)
+            {
+                <tr>
+                    <td>@c.CategoryId</td>
+                    <td>@c.CategoryName</td>
+                    <td>
+                        <button class="btn btn-info btn-sm" asp-action="Edit" asp-controller="Category" asp-route-id="@c.CategoryId">Edit</button>
+                        <button class="btn btn-danger btn-sm" asp-action="Delete" asp-controller="Category" asp-route-id="@c.CategoryId">Delete</button>
+                    </td>
+                </tr>
+
+            }
+
+        </tbody>
+    </table>
+</div>
